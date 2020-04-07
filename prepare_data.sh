@@ -1,10 +1,26 @@
 #!/usr/bin/env bash
-data_dir="data"
-img_dir="${data_dir}/images"
-ann_dir="${data_dir}/annotations"
+tmp_dir="data~"
+coco_dir="${tmp_dir}/coco"
+img_dir="${coco_dir}/images"
+ann_dir="${coco_dir}/annotations"
 mkdir -p "${img_dir}" "${ann_dir}"
-wget -P "${img_dir}" -c http://images.cocodataset.org/zips/train2017.zip
-wget -P "${img_dir}" http://images.cocodataset.org/zips/val2017.zip
-wget -P "${img_dir}" http://images.cocodataset.org/zips/test2017.zip
-# wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
+train_zip="${img_dir}/train.zip"
+val_zip="${img_dir}/val.zip"
+test_zip="${img_dir}/test.zip"
+ann_zip="${ann_dir}/annotations.zip"
+train_url="http://images.cocodataset.org/zips/train2017.zip"
+val_url="http://images.cocodataset.org/zips/val2017.zip"
+test_url="http://images.cocodataset.org/zips/test2017.zip"
+ann_url="http://images.cocodataset.org/annotations/annotations_trainval2017.zip"
+wget -O "${train_zip}" -c "${train_url}"
+wget -O "${val_zip}" -c "${val_url}"
+wget -O "${test_zip}" -c "${test_url}"
+wget -O "${ann_zip}" -c "${ann_url}"
+unzip -n "${train_zip}" -d "${img_dir}"
+unzip -n "${val_zip}" -d "${img_dir}"
+unzip -n "${test_zip}" -d "${img_dir}"
+unzip -n -j "${ann_zip}" -d "${ann_dir}"
+rm "${train_zip}" "${val_zip}" "${test_zip}" "${ann_zip}"
+data_dir="data"
+mv "${tmp_dir}" "${data_dir}"
 

@@ -1,18 +1,33 @@
-# Our object detector
+# Barebones object detector
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE.md)
+[![Python: 3.6.9](https://img.shields.io/badge/Python-3.6.9-informational.svg?style=flat-square&logo=python)](https://www.python.org/downloads/release/python-369/)
 
-Our implementation of [CenterNet](https://github.com/xingyizhou/CenterNet).
+Our extremely simple, barebones variation of [CenterNet](https://github.com/xingyizhou/CenterNet).
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+These instructions will get us a copy of the project up and running on our local machine for development and testing purposes. 
+
+### Clean
+
+Should we want to start from a fresh build, we can run `make clean`.
 
 ### Prerequisites
 
-Download the COCO dataset and arranging files into the correct directories by running the following.
-
+Download the [COCO dataset](http://cocodataset.org) and arrange files into the correct directories by running:
 ```
 make data
 ```
+This will create a temporary directory `data~`. This allows us to resume download by running `make data` should the download process be interrupted. Once the dataset is prepared, the directory `data~` will be renamed to `data`.
+
+Prepare a virtual environment called `env` with an updated pip by running:
+```
+python3 -m venv env
+source env/bin/activate
+pip3 install -U upgrade pip
+```
+We can deactivate the virtual environment by running `deactivate`.
+
 
 <!--
 
@@ -72,7 +87,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use Git for versioning. Run `git log` to view commit history.
+We use [Git](https://git-scm.com/) for versioning. Run `git log` to view commit history.
 
 ## Authors
 
@@ -80,12 +95,11 @@ We use Git for versioning. Run `git log` to view commit history.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the [MIT License](LICENSE.md).
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+- Original implementation of [CenterNet](https://github.com/xingyizhou/CenterNet).
+- PurpleBooth's [README.md template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2), which this README.md is based on.
 
 
